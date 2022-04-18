@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>$(pkgHealthChecksRabbitMQ)</Version>
+    <Authors>Peyman Ranjbar &lt;peymanpn@yahoo.com&gt;</Authors>
+    <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString("yyyy")) Peyman.R</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package info">
+    <Description>RabbitMQ HealthChecks</Description>
+    <PublishUrl>https://www.nuget.org/packages/Pdsr.HealthChecks.RabbitMQ</PublishUrl>
+    <RepositoryUrl>https://github.com/Peymanpn/Pdsr.HealthChecks</RepositoryUrl>
+    <PackageTags>RabbitMQ;RabbitMQ HealthChecks;HealthChecks</PackageTags>
+    <PackageId>Pdsr.HealthChecks.RabbitMQ</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.4" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
+  </ItemGroup>
+
+</Project>

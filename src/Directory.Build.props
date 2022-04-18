@@ -1,0 +1,53 @@
+<Project>
+    <PropertyGroup>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LangVersion>10</LangVersion>
+        <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
+        <Copyright>© $([System.DateTime]::UtcNow.ToString("yyyy")) Peyman.R</Copyright>
+        <Authors><![CDATA[Peyman Ranjbar <peymanpn@yahoo.com>]]></Authors>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Versions">
+        <pkgHealthChecks>2.0.3</pkgHealthChecks>
+        <pkgHealthChecksNpgSql>2.0.2</pkgHealthChecksNpgSql>
+        <pkgHealthChecksRabbitMQ>1.0.1</pkgHealthChecksRabbitMQ>
+        <pkgHealthChecksRedis>2.0.1-preview.1.254</pkgHealthChecksRedis>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Package Info files">
+        <Title>Pdsr.Cache</Title>
+        <PackageVersion>$(Version)</PackageVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>pdsr-logo-128.png</PackageIcon>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/Peymanpn/Pdsr.Core</RepositoryUrl>
+    </PropertyGroup>
+  <ItemGroup>
+        <None Include="../../pdsr-logo-128.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+        <None Include="../../README.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+
+        <None Include="../../LICENSE.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>../../key.snk</AssemblyOriginatorKeyFile>
+    </PropertyGroup>
+
+</Project>

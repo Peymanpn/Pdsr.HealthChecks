@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>$(pkgHealthChecksNpgSql)</Version>
+    <Authors>Peyman Ranjbar &lt;peymanpn@yahoo.com&gt;</Authors>
+    <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString("yyyy")) Peyman.R</Copyright>
+  </PropertyGroup>
+<PropertyGroup Label="Package info">
+    <Description>Npgsql Postgres Healthchecks</Description>
+    <PublishUrl>https://www.nuget.org/packages/Pdsr.HealthChecks.Npgsql</PublishUrl>
+    <RepositoryUrl>https://github.com/Peymanpn/Pdsr.HealthChecks</RepositoryUrl>
+    <PackageTags>HealthChecks;Npgsql HealthChecks;Postgres HealthChecks</PackageTags>
+    <PackageId>Pdsr.HealthChecks.Npgsql</PackageId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pdsr.HealthChecks\Pdsr.HealthChecks.csproj" />
+  </ItemGroup>
+
+</Project>

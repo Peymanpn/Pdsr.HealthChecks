@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>$(pkgHealthChecksRedis)</Version>
+    <Authors>Peyman Ranjbar &lt;peymanpn@yahoo.com&gt;</Authors>
+    <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString("yyyy")) Peyman.R</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package info">
+    <Description>Redis Cache Manager HealthCheck system.</Description>
+    <PublishUrl>https://www.nuget.org/packages/Pdsr.HealthChecks.RedisCacheManager</PublishUrl>
+    <RepositoryUrl>https://github.com/Peymanpn/Pdsr.HealthChecks</RepositoryUrl>
+    <PackageTags>HealthChecks;RedisCacheManager HealthChecks;Redis HealthChecks</PackageTags>
+    <PackageId>Pdsr.HealthChecks.Redis</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pdsr.HealthChecks\Pdsr.HealthChecks.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pdsr.Cache.Redis" Version="3.0.4" />
+  </ItemGroup>
+
+</Project>
