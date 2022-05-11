@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pdsr.HealthChecks.RabbitMQ"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pdsr.HealthChecks.RedisCacheManager", "src\Pdsr.HealthChecks.RedisCacheManager\Pdsr.HealthChecks.RedisCacheManager.csproj", "{A4E93D70-CD79-4CF2-92E4-E5C3F70AD76B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{CF27A814-8770-4332-89FA-29C1EAE3311B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicHealthCheckSample", "samples\BasicHealthCheckSample\BasicHealthCheckSample.csproj", "{CDF1390A-D95C-4738-843E-033BA7036C2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 		{A4E93D70-CD79-4CF2-92E4-E5C3F70AD76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4E93D70-CD79-4CF2-92E4-E5C3F70AD76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4E93D70-CD79-4CF2-92E4-E5C3F70AD76B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF1390A-D95C-4738-843E-033BA7036C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF1390A-D95C-4738-843E-033BA7036C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF1390A-D95C-4738-843E-033BA7036C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF1390A-D95C-4738-843E-033BA7036C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDF1390A-D95C-4738-843E-033BA7036C2C} = {CF27A814-8770-4332-89FA-29C1EAE3311B}
 	EndGlobalSection
 EndGlobal

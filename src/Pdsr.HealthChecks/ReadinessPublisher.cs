@@ -51,8 +51,16 @@ namespace Pdsr.HealthChecks
         }
     }
 
+    /// <summary>
+    /// Readiness Publisher serive registration 
+    /// </summary>
     public static class ReadinessPublisherExtensions
     {
+        /// <summary>
+        /// Registers the <see cref="ReadinessPublisher{TSysHealth}"/> background service to publish health results.
+        /// </summary>
+        /// <typeparam name="TSysHealth">Type of the global system health class. <see cref="ISystemHealth"/></typeparam>
+        /// <param name="services"></param>
         public static void RegisterReadinessPublisher<TSysHealth>(this IServiceCollection services)
             where TSysHealth : class, ISystemHealth
         {

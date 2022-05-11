@@ -1,16 +1,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System;
-using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Pdsr.HealthChecks;
 
 public static class UIResponseWriter
 {
-    const string DEFAULT_CONTENT_TYPE = "application/json";
+    const string _defaultContentType = "application/json";
 
     private static readonly byte[] emptyResponse = new byte[] { (byte)'{', (byte)'}' };
     private static readonly Lazy<JsonSerializerOptions> options = new Lazy<JsonSerializerOptions>(() => CreateJsonOptions());
@@ -19,7 +16,7 @@ public static class UIResponseWriter
     {
         if (report != null)
         {
-            httpContext.Response.ContentType = DEFAULT_CONTENT_TYPE;
+            httpContext.Response.ContentType = _defaultContentType;
 
             var uiReport = UIHealthReport
                 .CreateFrom(report);

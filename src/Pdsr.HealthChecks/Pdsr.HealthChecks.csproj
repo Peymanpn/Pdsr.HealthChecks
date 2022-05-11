@@ -8,6 +8,10 @@
     <Copyright>© $([System.DateTime]::UtcNow.ToString("yyyy")) Peyman.R</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Using Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+  </ItemGroup>
+  
   <PropertyGroup Label="Package info">
     <Description>Healthchecks</Description>
     <PublishUrl>https://www.nuget.org/packages/Pdsr.HealthChecks</PublishUrl>
@@ -18,8 +22,8 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.4" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.5" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
   </ItemGroup>
 

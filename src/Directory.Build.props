@@ -2,6 +2,7 @@
     <PropertyGroup>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -12,10 +13,10 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Versions">
-        <pkgHealthChecks>2.0.3</pkgHealthChecks>
-        <pkgHealthChecksNpgSql>2.0.2</pkgHealthChecksNpgSql>
-        <pkgHealthChecksRabbitMQ>1.0.1</pkgHealthChecksRabbitMQ>
-        <pkgHealthChecksRedis>2.0.1-preview.1.254</pkgHealthChecksRedis>
+        <pkgHealthChecks>2.1.0</pkgHealthChecks>
+        <pkgHealthChecksNpgSql>2.1.0</pkgHealthChecksNpgSql>
+        <pkgHealthChecksRabbitMQ>1.1.0</pkgHealthChecksRabbitMQ>
+        <pkgHealthChecksRedis>2.0.0</pkgHealthChecksRedis>
     </PropertyGroup>
 
     <PropertyGroup Label="Package Info files">
