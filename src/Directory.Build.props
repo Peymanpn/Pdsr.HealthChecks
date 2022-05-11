@@ -16,12 +16,10 @@
         <pkgHealthChecks>2.1.0</pkgHealthChecks>
         <pkgHealthChecksNpgSql>2.1.0</pkgHealthChecksNpgSql>
         <pkgHealthChecksRabbitMQ>1.1.0</pkgHealthChecksRabbitMQ>
-        <pkgHealthChecksRedis>2.0.0</pkgHealthChecksRedis>
+        <pkgHealthChecksRedis>2.0.1</pkgHealthChecksRedis>
     </PropertyGroup>
 
     <PropertyGroup Label="Package Info files">
-        <Title>Pdsr.Cache</Title>
-        <PackageVersion>$(Version)</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageIcon>pdsr-logo-128.png</PackageIcon>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
