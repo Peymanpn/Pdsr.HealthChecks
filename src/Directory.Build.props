@@ -13,10 +13,10 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Versions">
-        <pkgHealthChecks>2.1.0</pkgHealthChecks>
-        <pkgHealthChecksNpgSql>2.1.0</pkgHealthChecksNpgSql>
-        <pkgHealthChecksRabbitMQ>1.1.0</pkgHealthChecksRabbitMQ>
-        <pkgHealthChecksRedis>2.0.1</pkgHealthChecksRedis>
+        <pkgHealthChecks>2.1.1</pkgHealthChecks>
+        <pkgHealthChecksNpgSql>2.1.1</pkgHealthChecksNpgSql>
+        <pkgHealthChecksRabbitMQ>1.1.1</pkgHealthChecksRabbitMQ>
+        <pkgHealthChecksRedis>2.0.2</pkgHealthChecksRedis>
     </PropertyGroup>
 
     <PropertyGroup Label="Package Info files">
@@ -24,7 +24,7 @@
         <PackageIcon>pdsr-logo-128.png</PackageIcon>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/Peymanpn/Pdsr.Core</RepositoryUrl>
+        <RepositoryUrl>https://github.com/Peymanpn/Pdsr.HealthChecks</RepositoryUrl>
     </PropertyGroup>
   <ItemGroup>
         <None Include="../../pdsr-logo-128.png">
