@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Version>$(pkgHealthChecksRedis)</Version>
     <Authors>Peyman Ranjbar &lt;peymanpn@yahoo.com&gt;</Authors>
     <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pdsr.Cache.Redis" Version="3.0.5" />
+    <PackageReference Include="Pdsr.Cache.Redis" Version="3.2.0" />
   </ItemGroup>
 
 </Project>

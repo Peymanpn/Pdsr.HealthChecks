@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <Version>$(pkgHealthChecks)</Version>
     <Authors>Peyman Ranjbar &lt;peymanpn@yahoo.com&gt;</Authors>
     <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
@@ -11,7 +11,7 @@
   <ItemGroup>
     <Using Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
   </ItemGroup>
-  
+
   <PropertyGroup Label="Package info">
     <Description>Healthchecks</Description>
     <PublishUrl>https://www.nuget.org/packages/Pdsr.HealthChecks</PublishUrl>
@@ -22,9 +22,9 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
