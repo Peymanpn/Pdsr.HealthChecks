@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pdsr.Cache.Redis" Version="3.2.0" />
+    <PackageReference Include="Pdsr.Cache.Redis" Version="3.2.1" />
   </ItemGroup>
 
 </Project>

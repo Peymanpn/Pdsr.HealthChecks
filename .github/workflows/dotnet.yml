@@ -28,7 +28,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release -p:SignAssembly=True --no-restore
     - name: Make packages
-      run: dotnet pack --no-build --no-restore --configuration Release --output ./artifacts/
+      run: |
+        dotnet pack --no-build --no-restore --configuration Release --output ./artifacts/ src/Pdsr.HealthChecks
+        dotnet pack --no-build --no-restore --configuration Release --output ./artifacts/ src/Pdsr.HealthChecks.NpgSql
+        dotnet pack --no-build --no-restore --configuration Release --output ./artifacts/ src/Pdsr.HealthChecks.RabbitMQ
+        dotnet pack --no-build --no-restore --configuration Release --output ./artifacts/ src/Pdsr.HealthChecks.RedisCacheManager
     - name: Upload package artifacts
       uses: actions/upload-artifact@v2
       with:

@@ -2,6 +2,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Pdsr.Cache;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Pdsr.HealthChecks.RedisCacheManager;
 
@@ -24,13 +25,13 @@ public class RedisCacheManagerHealthCheck : IHealthCheck
 
         try
         {
-            var saveValue = DateTime.UtcNow.Ticks;
+            var saveValue = Stopwatch.GetTimestamp();
             if (_cache.Server.IsConnected)
             {
                 await _cache.SetAsync(cacheKey, saveValue, cacheTime: null, cancellationToken: cancellationToken);
                 var cachedValue = await _cache.GetAsync<long>(cacheKey, cancellationToken: cancellationToken);
 
-                var responseTime = new TimeSpan(DateTime.UtcNow.Ticks - saveValue);
+                var responseTime = new TimeSpan(Stopwatch.GetTimestamp() - saveValue);
                 IReadOnlyDictionary<string, object> hcResults = new ReadOnlyDictionary<string, object>(
                             new Dictionary<string, object> {
                                     {   "ping_time"                      , responseTime                      },
@@ -38,14 +39,14 @@ public class RedisCacheManagerHealthCheck : IHealthCheck
                         });
                 if (responseTime.TotalMilliseconds > options.UnhealthyThreshold)
                 {
-                    return new HealthCheckResult(context.Registration.FailureStatus, description: $"Unhealthy. Pdsr Redis Manager health check exceeded the limit {_options.CurrentValue.UnhealthyThreshold}. System is {nameof(HealthStatus.Unhealthy)}");
+                    return new HealthCheckResult(context.Registration.FailureStatus, description: $"Unhealthy. Pdsr Redis Manager health check exceeded the limit {options.UnhealthyThreshold}. System is {nameof(HealthStatus.Unhealthy)}", data: hcResults);
                 }
                 else if (responseTime.TotalMilliseconds > options.DegradedThreshold)
                 {
-                    var degradedMsg = $"Degraded. Pdsr Redis Manager health check exceeded the limit {_options.CurrentValue.DegradedThreshold}. System is {nameof(HealthStatus.Degraded)}";
-                    return HealthCheckResult.Degraded(degradedMsg);
+                    var degradedMsg = $"Degraded. Pdsr Redis Manager health check exceeded the limit {options.DegradedThreshold}. System is {nameof(HealthStatus.Degraded)}";
+                    return HealthCheckResult.Degraded(description: degradedMsg, data: hcResults);
                 }
-                return HealthCheckResult.Healthy(description: "Ping", hcResults);
+                return HealthCheckResult.Healthy(description: "Ping", data: hcResults);
             }
             return HealthCheckResult.Unhealthy("Cannot connect to redis");
 
