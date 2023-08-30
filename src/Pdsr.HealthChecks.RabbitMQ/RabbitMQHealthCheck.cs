@@ -55,16 +55,13 @@ public class RabbitMQHealthCheck : IHealthCheck
     {
         if (_connection == null)
         {
-            if (_factory == null)
-            {
-                _factory = new ConnectionFactory()
+            _factory ??= new ConnectionFactory()
                 {
                     Uri = _rabbitConnectionString,
                     AutomaticRecoveryEnabled = true,
                     UseBackgroundThreadsForIO = true,
                     Ssl = _sslOption ?? new SslOption()
                 };
-            }
 
             _connection = _factory.CreateConnection();
         }
