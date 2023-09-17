@@ -13,10 +13,10 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Versions">
-        <pkgHealthChecks>2.2.2</pkgHealthChecks>
-        <pkgHealthChecksNpgSql>2.2.2</pkgHealthChecksNpgSql>
-        <pkgHealthChecksRabbitMQ>1.2.2</pkgHealthChecksRabbitMQ>
-        <pkgHealthChecksRedis>2.2.0</pkgHealthChecksRedis>
+        <pkgHealthChecks>2.2.3</pkgHealthChecks>
+        <pkgHealthChecksNpgSql>2.2.3</pkgHealthChecksNpgSql>
+        <pkgHealthChecksRabbitMQ>1.2.3</pkgHealthChecksRabbitMQ>
+        <pkgHealthChecksRedis>2.2.1</pkgHealthChecksRedis>
     </PropertyGroup>
 
     <PropertyGroup Label="Package Info files">

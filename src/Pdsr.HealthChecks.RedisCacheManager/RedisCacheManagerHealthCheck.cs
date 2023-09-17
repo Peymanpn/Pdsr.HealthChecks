@@ -8,17 +8,20 @@ namespace Pdsr.HealthChecks.RedisCacheManager;
 
 public class RedisCacheManagerHealthCheck : IHealthCheck
 {
-    private const string cacheTestKey = ":health-check:";
+    private const string _cacheTestKey = ":health-check:";
+
+    // expire the cache entry after 1 seconds
+    private const int _cacheTestExpireSeconds = 1;
     private readonly IOptionsMonitor<PdsrRedisCheckOptions> _options;
     private readonly IRedisCacheManager _cache;
-    private const string healthIssueMessageFormat = "Degraded. Pdsr Redis Manager health check response time took {0} ms which exceeded the limit {1}. ms System health is {2}";
+    private const string _healthIssueMessageFormat = "Degraded. Pdsr Redis Manager health check response time took {0} ms which exceeded the limit {1}. ms System health is {2}";
     private readonly string _cacheUniqueKey;
 
     public RedisCacheManagerHealthCheck(IOptionsMonitor<PdsrRedisCheckOptions> options, IRedisCacheManager cache)
     {
         _options = options;
         _cache = cache;
-        _cacheUniqueKey = $"{cacheTestKey}{Guid.NewGuid()}";
+        _cacheUniqueKey = $"{_cacheTestKey}{Guid.NewGuid()}";
     }
 
     public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
@@ -31,7 +34,7 @@ public class RedisCacheManagerHealthCheck : IHealthCheck
             var saveValue = Stopwatch.GetTimestamp();
             if (_cache.Server.IsConnected)
             {
-                await _cache.SetAsync(cacheKey, saveValue, cacheTime: null, cancellationToken: cancellationToken);
+                await _cache.SetAsync(cacheKey, saveValue, cacheTime: _cacheTestExpireSeconds, cancellationToken: cancellationToken);
                 _ = await _cache.GetAsync<long>(cacheKey, cancellationToken: cancellationToken);
 
                 var responseTime = new TimeSpan(Stopwatch.GetTimestamp() - saveValue);
@@ -46,14 +49,14 @@ public class RedisCacheManagerHealthCheck : IHealthCheck
                 // Is it above unhealthy threshold?
                 if (responseTime.TotalMilliseconds > options.UnhealthyThreshold)
                 {
-                    string unhealthyMessage= string.Format(healthIssueMessageFormat, responseTime.TotalMilliseconds, options.UnhealthyThreshold, HealthStatus.Unhealthy);
+                    string unhealthyMessage = string.Format(_healthIssueMessageFormat, responseTime.TotalMilliseconds, options.UnhealthyThreshold, HealthStatus.Unhealthy);
                     return new HealthCheckResult(context.Registration.FailureStatus, description: $"Unhealthy. Pdsr Redis Manager health check response time took {responseTime.TotalMilliseconds} ms which exceeded the limit {options.UnhealthyThreshold} ms. System is {nameof(HealthStatus.Unhealthy)}", data: hcResults);
                 }
                 // Is above degraded threshold
                 else if (responseTime.TotalMilliseconds > options.DegradedThreshold)
                 {
-                    var degradedMsg = string.Format(healthIssueMessageFormat, responseTime.TotalMilliseconds, options.DegradedThreshold, HealthStatus.Degraded);
-                        //$"Degraded. Pdsr Redis Manager health check response time took {responseTime.TotalMilliseconds} ms which exceeded the limit {options.DegradedThreshold}. ms System health is {nameof(HealthStatus.Degraded)}";
+                    var degradedMsg = string.Format(_healthIssueMessageFormat, responseTime.TotalMilliseconds, options.DegradedThreshold, HealthStatus.Degraded);
+                    //$"Degraded. Pdsr Redis Manager health check response time took {responseTime.TotalMilliseconds} ms which exceeded the limit {options.DegradedThreshold}. ms System health is {nameof(HealthStatus.Degraded)}";
                     return HealthCheckResult.Degraded(description: degradedMsg, data: hcResults);
                 }
                 return HealthCheckResult.Healthy(description: "Ping success.", data: hcResults);
