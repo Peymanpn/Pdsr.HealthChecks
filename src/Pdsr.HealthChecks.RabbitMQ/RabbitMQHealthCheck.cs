@@ -59,7 +59,6 @@ public class RabbitMQHealthCheck : IHealthCheck
                 {
                     Uri = _rabbitConnectionString,
                     AutomaticRecoveryEnabled = true,
-                    UseBackgroundThreadsForIO = true,
                     Ssl = _sslOption ?? new SslOption()
                 };
 

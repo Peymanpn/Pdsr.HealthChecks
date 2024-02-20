@@ -20,7 +20,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: signing key
@@ -41,4 +41,5 @@ jobs:
           **/*.nupkg
           **/*.snupkg
     - name: Publish packages
+      # if: github.event_name == 'release' && github.event.action == 'published'
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }}

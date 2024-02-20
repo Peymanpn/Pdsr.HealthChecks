@@ -41,7 +41,7 @@ public class RedisCacheManagerHealthCheck : IHealthCheck
                 IReadOnlyDictionary<string, object> hcResults = new ReadOnlyDictionary<string, object>(
                             new Dictionary<string, object> {
                                     {   "ping_time"                      , responseTime                      },
-                                    {   "ping_time_ellapsed_ms"          , responseTime.TotalMilliseconds    },
+                                    {   "ping_time_elapsed_ms"          , responseTime.TotalMilliseconds     },
                                     {   "degraded_threshold"             , options.DegradedThreshold         },
                                     {   "unhealthy_threshold"            , options.UnhealthyThreshold        },
                     });
